@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 from database_setup import Base, StockDespensa
@@ -5,11 +6,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vealrchpbyyzfd:EMddw1MYt1zvpaYfdE60VehEvf@ec2-54-83-5-43.compute-1.amazonaws.com:5432/devb9qldl6f8kt'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-engine = create_engine('postgres://vealrchpbyyzfd:EMddw1MYt1zvpaYfdE60VehEvf@ec2-54-83-5-43.compute-1.amazonaws.com:5432/devb9qldl6f8kt')
+engine = create_engine(os.environ['DATABASE_URL'])
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
