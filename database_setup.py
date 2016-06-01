@@ -25,7 +25,7 @@ class StockDespensa(Base):
         }
 
 
-engine = create_engine('DATABASE_URL')
+engine = create_engine('postgres://vealrchpbyyzfd:EMddw1MYt1zvpaYfdE60VehEvf@ec2-54-83-5-43.compute-1.amazonaws.com:5432/devb9qldl6f8kt')
 
 
 Base.metadata.create_all(engine)
